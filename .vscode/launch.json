@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-AdminVentaCasasApplication<admin_venta_casas>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "co.com.edu.admin_venta_casas.AdminVentaCasasApplication",
+            "projectName": "admin_venta_casas",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
