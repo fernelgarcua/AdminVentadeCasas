@@ -30,16 +30,13 @@ public class InmuebleServiceImpl implements InmuebleService{
     private VisitaRepository visitaRepository;
 
     @Override
-    public InmuebleEntiti save(InmuebleEntiti inmueble, Long idOficina, long idVisita) {
+    public InmuebleEntiti save(InmuebleEntiti inmueble, Long idOficina) {
         Optional<OficinaEntity> oficinaOptional= oficinaRepositorie.findById(idOficina);
-        Optional<VisitaEntity> visitaOptional= visitaRepository.findById(idVisita);
 
-        if(oficinaOptional.isPresent() && visitaOptional.isPresent()){
+        if(oficinaOptional.isPresent()){
             OficinaEntity oficinaEntity=oficinaOptional.get();
-            VisitaEntity visitaEntity=visitaOptional.get();
 
             inmueble.setOficina(oficinaEntity);
-            inmueble.setVisitas(visitaEntity);
             inmuebleRepositorie.save(inmueble);
 
             return inmueble;

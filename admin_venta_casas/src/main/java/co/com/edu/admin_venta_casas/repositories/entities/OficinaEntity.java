@@ -27,6 +27,7 @@ public class OficinaEntity {
     private String direccionOficina;
     private Number telefonoOficina;
     private String ciudadOficina;
+
     @OneToMany(mappedBy = "oficina")
     @JsonIgnoreProperties("oficina")
     private List<InmuebleEntiti> inmuebles;

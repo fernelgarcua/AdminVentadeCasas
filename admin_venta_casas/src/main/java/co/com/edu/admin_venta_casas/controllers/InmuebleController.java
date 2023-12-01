@@ -25,9 +25,9 @@ public class InmuebleController {
     }
 
     @PostMapping("/{idOficina}/{idVisita}")
-    public InmuebleEntiti save(@PathVariable Long idOficina, @PathVariable Long idVisita, @RequestBody InmuebleEntiti inmueble)
+    public InmuebleEntiti save(@PathVariable Long idOficina, @RequestBody InmuebleEntiti inmueble)
     {
-        return inmuebleService.save(inmueble, idOficina, idVisita);
+        return inmuebleService.save(inmueble, idOficina);
     }
     
 }

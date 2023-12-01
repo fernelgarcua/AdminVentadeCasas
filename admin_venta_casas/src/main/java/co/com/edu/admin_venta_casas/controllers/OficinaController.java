@@ -1,27 +1,27 @@
 package co.com.edu.admin_venta_casas.controllers;
 
+import co.com.edu.admin_venta_casas.services.impl.OficinaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import co.com.edu.admin_venta_casas.repositories.entities.InmuebleEntiti;
 import co.com.edu.admin_venta_casas.repositories.entities.OficinaEntity;
 import co.com.edu.admin_venta_casas.services.InmuebleService;
 import co.com.edu.admin_venta_casas.services.OficinaService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/oficina")
 public class OficinaController {
 
     @Autowired
-    private OficinaService oficinaService;
+    private OficinaServiceImpl oficinaService;
 
-    @Autowired 
-    private InmuebleService inmuebleService;
+    @GetMapping
+    public Iterable<OficinaEntity> getOficinas() {
+        return oficinaService.findAll();
+    }
 
     @GetMapping("/{id}")
     public OficinaEntity findById(@PathVariable Long id)
@@ -29,10 +29,18 @@ public class OficinaController {
         return oficinaService.findById(id);
     }
 
-    @PostMapping("/{idOficina}/{idInmueble}")
-    public InmuebleEntiti save(@PathVariable Long idOficina, @PathVariable Long idVisita, @RequestBody InmuebleEntiti inmueble)
-    {
-        return inmuebleService.save(inmueble, idOficina, idVisita);
+    @PostMapping
+    public OficinaEntity createOficina(@RequestBody OficinaEntity oficina) {
+        return oficinaService.save(oficina);
     }
-    
+
+    @PutMapping("/{id}")
+    public OficinaEntity updateOficina(@PathVariable Long id, @RequestBody OficinaEntity oficina) {
+        return oficinaService.update(oficina, id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteOficina(@PathVariable Long id) {
+        oficinaService.delete(id);
+    }
 }

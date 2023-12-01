@@ -21,16 +21,13 @@ public class InmuebleEntiti {
     private String ciudadInmueble;
     private String direccionInmueble;
     private String tipoInmueble;
+
     @ManyToOne
     @JoinColumn(name = "oficina_id")
     @JsonIgnoreProperties("inmuebles")
     private OficinaEntity oficina;
 
-    @OneToMany(mappedBy = "visita_id")
-    @JsonIgnoreProperties("inmueble")
+    @OneToMany(mappedBy = "inmueble")
+    @JsonIgnoreProperties("inmuebles")
     private List<VisitaEntity> visitas;
-
-    public void setVisitas(VisitaEntity visitaEntity){
-        this.visitas.add(visitaEntity);
-    }
 }
