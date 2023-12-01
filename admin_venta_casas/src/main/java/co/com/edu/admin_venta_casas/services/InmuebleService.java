@@ -7,4 +7,6 @@ public interface InmuebleService {
     InmuebleEntiti save(InmuebleEntiti inmueble, Long idOficina, long idVisita);
 
     InmuebleEntiti findByid(Long id);
+
+    Iterable<InmuebleEntiti> findAll();
 }

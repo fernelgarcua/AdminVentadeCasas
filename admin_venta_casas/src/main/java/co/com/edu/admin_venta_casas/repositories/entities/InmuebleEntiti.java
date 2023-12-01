@@ -29,4 +29,8 @@ public class InmuebleEntiti {
     @OneToMany(mappedBy = "visita_id")
     @JsonIgnoreProperties("inmueble")
     private List<VisitaEntity> visitas;
+
+    public void setVisitas(VisitaEntity visitaEntity){
+        this.visitas.add(visitaEntity);
+    }
 }
