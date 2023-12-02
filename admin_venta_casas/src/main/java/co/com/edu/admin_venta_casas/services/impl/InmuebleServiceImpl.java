@@ -102,4 +102,15 @@ public class InmuebleServiceImpl implements InmuebleService{
             throw new NullPointerException("No existe en la base de datos");
         }
     }
+
+    @Override
+    public InmuebleEntiti findByCodigo(String id) {
+        InmuebleEntiti inmuebleOptional= inmuebleRepositorie.findByCodigo(id);
+        
+        if(inmuebleOptional != null){
+            return inmuebleOptional;
+        }else{  
+            throw new NullPointerException("No existe en la base de datos");
+        }
+    }
 }

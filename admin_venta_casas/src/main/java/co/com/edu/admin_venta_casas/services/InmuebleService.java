@@ -8,6 +8,8 @@ public interface InmuebleService {
 
     InmuebleEntiti findByid(Long id);
 
+    InmuebleEntiti findByCodigo(String id);
+
     Iterable<InmuebleEntiti> findAll();
 
     InmuebleEntiti update(InmuebleEntiti inmueble, Long id, Long idOficina);

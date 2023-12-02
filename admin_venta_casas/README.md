@@ -1,16 +1,16 @@
 Requisitos Funcionales:
 1.	Servicios de Gestión de Inmuebles:
-o	Crear un nuevo inmueble.
-o	Actualizar la información de un inmueble existente.
-o	Eliminar un inmueble.
-o	Obtener detalles de un inmueble por su número de referencia.
-o	Listar inmuebles disponibles para venta o alquiler.
+o	Crear un nuevo inmueble. <------
+o	Actualizar la información de un inmueble existente. <---------
+o	Eliminar un inmueble. <---------
+o	Obtener detalles de un inmueble por su número de referencia. <---------
+o	Listar inmuebles disponibles para venta o alquiler. <---------
 o	Asignar una ubicación de llaves a un inmueble.
-o	Registrar una visita a un inmueble.
+o	Registrar una visita a un inmueble. <---------
 2.	Servicios de Gestión de Oficinas:
-o	Crear una nueva oficina.
-o	Actualizar la información de una oficina existente.
-o	Eliminar una oficina.
+o	Crear una nueva oficina. <---------
+o	Actualizar la información de una oficina existente. <---------
+o	Eliminar una oficina. <---------
 o	Obtener detalles de una oficina por su ubicación.
 3.	Servicios de Gestión de Zonas de la Ciudad:
 o	Crear una nueva zona de la ciudad.

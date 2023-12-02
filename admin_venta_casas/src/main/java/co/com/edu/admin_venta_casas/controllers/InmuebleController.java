@@ -32,6 +32,12 @@ public class InmuebleController {
         return inmuebleService.findByid(id);
     }
 
+    @GetMapping("/codigo/{codigo}")
+    public InmuebleEntiti findById(@PathVariable String codigo)
+    {
+        return inmuebleService.findByCodigo(codigo);
+    }
+
     @PostMapping("/{idOficina}")
     public InmuebleEntiti save(@PathVariable Long idOficina, @RequestBody InmuebleEntiti inmueble)
     {
