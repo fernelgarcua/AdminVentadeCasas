@@ -9,4 +9,8 @@ public interface InmuebleService {
     InmuebleEntiti findByid(Long id);
 
     Iterable<InmuebleEntiti> findAll();
+
+    InmuebleEntiti update(InmuebleEntiti inmueble, Long id, Long idOficina);
+
+    void delete(Long id);
 }

@@ -60,4 +60,46 @@ public class InmuebleServiceImpl implements InmuebleService{
     public Iterable<InmuebleEntiti> findAll() {
         return inmuebleRepositorie.findAll();
     }
+
+    @Override
+    public InmuebleEntiti update(InmuebleEntiti inmueble, Long inmuebleId, Long idOficina) {
+        Optional<InmuebleEntiti> inmuebleOptional= inmuebleRepositorie.findById(inmuebleId);
+        Optional<OficinaEntity> oficinaOptional= oficinaRepositorie.findById(idOficina);
+
+        if(inmuebleOptional.isPresent() && oficinaOptional.isPresent()){
+            InmuebleEntiti inmuebleEntity=inmuebleOptional.get();
+
+            inmuebleEntity.setCodigo(inmueble.getCodigo());
+            inmuebleEntity.setCiudadInmueble(inmueble.getCiudadInmueble());
+            inmuebleEntity.setDireccionInmueble(inmueble.getDireccionInmueble());
+            inmuebleEntity.setArea(inmueble.getArea());
+            inmuebleEntity.setTipoInmueble(inmueble.getTipoInmueble());
+            inmuebleEntity.setOficina(oficinaOptional.get());
+
+            inmuebleRepositorie.save(inmuebleEntity);
+
+            return inmuebleEntity;
+        }else{
+            throw new NullPointerException("No existe en la base de datos");
+        }
+    }
+
+    @Override
+    public void delete(Long id) {
+        Optional<InmuebleEntiti> inmuebleOptional= inmuebleRepositorie.findById(id);
+
+        if(inmuebleOptional.isPresent()){
+            InmuebleEntiti inmuebleEntity=inmuebleOptional.get();
+
+            List<VisitaEntity> visitas = visitaRepository.findByInmueble(inmuebleEntity);
+
+            if(visitas.isEmpty()){
+                inmuebleRepositorie.delete(inmuebleEntity);
+            }else{
+                throw new NullPointerException("No se puede eliminar porque tiene visitas asociadas");
+            }
+        }else{
+            throw new NullPointerException("No existe en la base de datos");
+        }
+    }
 }
